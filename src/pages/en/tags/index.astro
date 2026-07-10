@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { UI, byLang, localizeHref } from "../../../i18n";
+
+const LANG = "en";
+const posts = await getCollection("posts", byLang("en"));
+const counts = new Map<string, number>();
+for (const p of posts) {
+  for (const t of p.data.tags) counts.set(t, (counts.get(t) ?? 0) + 1);
+}
+const tags = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+const ui = UI[LANG];
+---
+
+<BaseLayout title="Tags" lang={LANG} altUrl={localizeHref("ja", "/tags/")}>
+  <p class="section-label">tags</p>
+  {
+    tags.length === 0 ? (
+      <p class="empty">{ui.emptyTags}</p>
+    ) : (
+      <div class="card-tags" style="gap:10px">
+        {tags.map(([tag, n]) => (
+          <a class="tag" href={localizeHref(LANG, `/tags/${encodeURIComponent(tag)}/`)} style="font-size:0.85rem;padding:6px 14px">
+            {tag} <span style="opacity:.6;margin-left:4px">{n}</span>
+          </a>
+        ))}
+      </div>
+    )
+  }
+</BaseLayout>

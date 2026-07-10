@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#00ADD8"/>
+  <!-- speech bubble -->
+  <path d="M12 16 h40 a4 4 0 0 1 4 4 v20 a4 4 0 0 1 -4 4 H30 l-8 9 v-9 h-10 a4 4 0 0 1 -4 -4 V20 a4 4 0 0 1 4 -4 z" fill="#fff"/>
+  <!-- "Aa" -->
+  <text x="32" y="37" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="bold" fill="#1b2733">Aa</text>
+</svg>

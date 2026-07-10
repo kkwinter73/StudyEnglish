@@ -1,0 +1,87 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostCard from "../../components/PostCard.astro";
+import { SITE, PAGE_SIZE } from "../../site";
+import { UI, byLang, localizeHref } from "../../i18n";
+import type { GetStaticPaths } from "astro";
+
+const LANG = "en";
+
+// ページ送り: 1ページ目は "/en/"、以降は "/en/2/" ...
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = (await getCollection("posts", byLang("en"))).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+  );
+  return paginate(posts, { pageSize: PAGE_SIZE });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const isFirst = page.currentPage === 1;
+const ui = UI[LANG];
+---
+
+<BaseLayout
+  wide
+  lang={LANG}
+  altUrl={localizeHref("ja", "/")}
+  title={isFirst ? undefined : `logs (${page.currentPage}/${page.lastPage})`}
+>
+  {
+    isFirst && (
+      <section class="hero">
+        <div class="terminal">
+          <div class="tbar">
+            <span class="led r" /><span class="led y" /><span class="led g" />
+            <span class="title">{SITE.prompt} — zsh</span>
+          </div>
+          <div class="tbody">
+            <p class="line"><span class="accent">$</span> {ui.heroCmd}</p>
+            <h1>
+              {SITE.title} <span style="color:var(--accent)">·</span> {ui.tagline}
+            </h1>
+            <p class="lead">{ui.description}</p>
+            <p class="line" style="margin-top:14px">
+              <span class="accent">$</span> ls logs/ | wc -l → {page.total}
+              <span class="cursor" />
+            </p>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <p class="section-label">
+    {ui.logsLabel} <span style="color:var(--text-faint)">({page.total})</span>
+  </p>
+
+  {
+    page.total === 0 ? (
+      <p class="empty">{ui.emptyLogs}</p>
+    ) : (
+      <ul class="post-list">
+        {page.data.map((post) => (
+          <PostCard post={post} lang={LANG} />
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    page.lastPage > 1 && (
+      <nav class="pagination" aria-label="pagination">
+        {page.url.prev ? (
+          <a href={page.url.prev}>{ui.newer}</a>
+        ) : (
+          <span class="disabled">{ui.newer}</span>
+        )}
+        <span class="pageno">{page.currentPage} / {page.lastPage}</span>
+        {page.url.next ? (
+          <a href={page.url.next}>{ui.older}</a>
+        ) : (
+          <span class="disabled">{ui.older}</span>
+        )}
+      </nav>
+    )
+  }
+</BaseLayout>

@@ -118,4 +118,4 @@ B: Good! We're gonna hang out next week and catch up properly.
 - 人付き合いは **hang out / run into / show up / catch up**。「遊ぶ」に play は使わない
 - **pick up** は「買う・迎えに行く・身につける」と多義。文脈で覚える
 
-次にやること: 句動詞の次は決まり文句。日常イディオムの定番は [/posts/everyday-idioms/](/posts/everyday-idioms/) へ。
+次にやること: 句動詞の次は決まり文句。日常イディオムの定番は [「Piece of cake — 会話によく出る日常イディオム」](/posts/everyday-idioms/) へ。

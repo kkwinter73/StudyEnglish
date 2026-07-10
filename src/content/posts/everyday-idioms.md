@@ -97,4 +97,4 @@ B: Don't push yourself. Your health comes first.
 - **It's raining cats and dogs.** など教科書イディオムには死語がある。土砂降りは **It's pouring.**
 - イディオムは「場面」とセットで覚えると口から出る
 
-次にやること: くだけた会話といえば音の縮約。gonna / wanna の正体は [/posts/casual-contractions/](/posts/casual-contractions/) へ。
+次にやること: くだけた会話といえば音の縮約。gonna / wanna の正体は [「gonna / wanna / gotta — ネイティブの音の縮約」](/posts/casual-contractions/) へ。

@@ -101,4 +101,4 @@ B: Let me check — yes, we can do 1 p.m. for a small fee.
 - 道を聞くのは **How do I get to...?**、距離感は **Is it within walking distance?**
 - 聞き取れなかったら遠慮せず **Could you say that again?**
 
-次にやること: 職場・会議で使える定番表現は [/posts/workplace-english/](/posts/workplace-english/) へ。
+次にやること: 職場・会議で使える定番表現は [「Let's circle back — 職場・会議で使える定番表現」](/posts/workplace-english/) へ。

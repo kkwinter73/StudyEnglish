@@ -100,4 +100,4 @@ A: Fair enough. Let's do that.
 - **No, I disagree.** の直球は強すぎる。まず一段受け止めてから
 - **I don't know... / Hmm, maybe.** は実質ノーのサイン。言うときも聞くときも注意
 
-次にやること: 意見がまとまったら誘ってみよう。誘い方・受け方・断り方は [/posts/invitations-and-plans/](/posts/invitations-and-plans/) へ。
+次にやること: 意見がまとまったら誘ってみよう。誘い方・受け方・断り方は [「Wanna grab coffee? — 誘う・受ける・断る」](/posts/invitations-and-plans/) へ。

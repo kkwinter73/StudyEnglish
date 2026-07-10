@@ -101,4 +101,4 @@ B: Will do. Text me when you get home!
 - 書き言葉・フォーマルな場では元の形に戻す。メールに gonna は書かない
 - 目上への誘いは wanna ではなく **Would you like to...?**
 
-次にやること: 会話をさらに自然にする「間」のつなぎ方は [/posts/fillers-and-softeners/](/posts/fillers-and-softeners/) へ。
+次にやること: 会話をさらに自然にする「間」のつなぎ方は [「you know と kind of — フィラーと和らげ表現の使いどころ」](/posts/fillers-and-softeners/) へ。

@@ -94,4 +94,4 @@ B: Anytime. It was on my way anyway.
 - 親切への「すみません」は **Sorry** ではなく **Thank you** で返すのがネイティブ流
 - 返しはカジュアルなら **No worries. / Anytime.**、フォーマルなら **My pleasure.**
 
-次にやること: 逆に自分が謝る側になったときの表現は [/posts/apologies-in-english/](/posts/apologies-in-english/) へ。
+次にやること: 逆に自分が謝る側になったときの表現は [「My bad と I'm sorry の距離感 — 謝り方と許し方」](/posts/apologies-in-english/) へ。

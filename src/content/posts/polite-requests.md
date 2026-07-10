@@ -106,4 +106,4 @@ B: Yeah, give me ten minutes.
 - 前置き（**Do me a favor? / When you get a chance**）でワンクッション置くと自然
 - 断るときは **I wish I could, but...** で理由を添える
 
-次にやること: 頼んだあとのお礼と返し方は [/posts/thanks-and-replies/](/posts/thanks-and-replies/) へ。
+次にやること: 頼んだあとのお礼と返し方は [「You're welcome だけじゃない — 感謝の伝え方と返し方」](/posts/thanks-and-replies/) へ。

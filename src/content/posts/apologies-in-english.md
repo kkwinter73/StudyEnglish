@@ -109,4 +109,4 @@ B: No worries. We just got here too.
 - **Excuse me** は行為の前置き、**Sorry** はしてしまったことへの謝罪
 - 悪くない場面で謝らない。**Sorry** の連発は卑屈に見える
 
-次にやること: 謝らずに意見をやわらかく伝える言い方は [/posts/giving-opinions-softly/](/posts/giving-opinions-softly/) へ。
+次にやること: 謝らずに意見をやわらかく伝える言い方は [「I think を卒業する — 意見をやわらかく言う言い方」](/posts/giving-opinions-softly/) へ。

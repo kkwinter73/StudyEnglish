@@ -115,4 +115,4 @@ A: You too. Let's grab lunch sometime.
 - 初対面は「今ここ」ネタ（**This place is packed. / Have you been here before?**）が安全
 - 政治・宗教・年収はNG。切り上げは **Anyway, I should get going. It was nice talking to you.**
 
-次にやること: 職場での雑談・会話をさらに掘り下げるなら [/posts/workplace-english/](/posts/workplace-english/) へ。
+次にやること: 職場での雑談・会話をさらに掘り下げるなら [「Let's circle back — 職場・会議で使える定番表現」](/posts/workplace-english/) へ。

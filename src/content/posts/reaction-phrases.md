@@ -99,4 +99,4 @@ B: That's such a shame.
 - **Good for you!** は棒読みだと皮肉になるので明るいトーンで
 - リアクションは短く・すぐ・気持ちを込めて。黙るのが一番もったいない
 
-次にやること: 聞き取れなかったときの聞き返し方は [/posts/asking-to-repeat/](/posts/asking-to-repeat/) へ。
+次にやること: 聞き取れなかったときの聞き返し方は [「Sorry? — 聞き取れなかったときの聞き返し方」](/posts/asking-to-repeat/) へ。

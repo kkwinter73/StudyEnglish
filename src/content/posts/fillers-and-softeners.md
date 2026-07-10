@@ -93,4 +93,4 @@ B: Don't get me wrong, I enjoyed it. It's just not something I'd watch twice.
 - 言い間違いは **I mean,** で即訂正。**That came out wrong.** で回収もできる
 - フィラーの入れすぎは逆効果。特に **like** の多用は幼く聞こえる
 
-次にやること: 返答に困ったときの切り札は [/posts/versatile-phrases/](/posts/versatile-phrases/) へ。
+次にやること: 返答に困ったときの切り札は [「It depends / Never mind — どこでも効く万能フレーズ」](/posts/versatile-phrases/) へ。

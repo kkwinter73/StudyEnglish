@@ -95,4 +95,4 @@ B: No problem. I'll be right back.
 - 会計は **Can we get the check?**、割り勘は **Separate checks, please.**、おごりは **It's on me.**
 - アメリカではチップ15〜20%が前提。会計時に忘れずに
 
-次にやること: 買い物で使う定番表現は [/posts/shopping-phrases/](/posts/shopping-phrases/) へ。
+次にやること: 買い物で使う定番表現は [「Just looking, thanks — 買い物で使う定番表現」](/posts/shopping-phrases/) へ。

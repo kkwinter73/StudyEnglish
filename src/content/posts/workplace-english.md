@@ -95,4 +95,4 @@ A: Great. I'll follow up by email with the action items. Thanks, everyone.
 - 確認・反論は **Just to clarify / Correct me if I'm wrong** をクッションにする
 - **circle back / touch base** などのジャーゴンは便利だが多用は軽く見られる。普通の表現と混ぜる
 
-次にやること: 日常で頻出の句動詞は [/posts/daily-phrasal-verbs/](/posts/daily-phrasal-verbs/) へ。
+次にやること: 日常で頻出の句動詞は [「figure out から始める — 日常会話の頻出句動詞」](/posts/daily-phrasal-verbs/) へ。

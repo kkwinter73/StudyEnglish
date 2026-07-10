@@ -115,4 +115,4 @@ A: Sure. Let's play it by ear this weekend.
 - **rain check** は「次は行きたい」の前向きな延期。**play it by ear** は成り行き任せ
 - 断ったら代案（**I'm free next weekend.**）を添えると関係が切れない
 
-次にやること: 会ったあとの雑談が続かない人は [/posts/small-talk-topics/](/posts/small-talk-topics/) へ。
+次にやること: 会ったあとの雑談が続かない人は [「沈黙が怖くなくなるスモールトーク — 定番の話題と切り出し方」](/posts/small-talk-topics/) へ。

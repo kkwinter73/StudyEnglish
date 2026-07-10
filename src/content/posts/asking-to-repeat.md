@@ -102,4 +102,4 @@ B: Got it, thanks.
 - 理解の確認は **So you're saying ...? / You mean ..., right?** が最強
 - 聞き返しは恥ではなく誠実さ。分かったふりのほうが信頼を失う
 
-次にやること: 人にお願いするときの丁寧な言い方は [/posts/polite-requests/](/posts/polite-requests/) へ。
+次にやること: 人にお願いするときの丁寧な言い方は [「Could you...? の先へ — 依頼の丁寧さレベル」](/posts/polite-requests/) へ。

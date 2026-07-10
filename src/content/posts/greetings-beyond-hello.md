@@ -108,4 +108,4 @@ B: Have a good one!
 - 別れ際は **Take care. / Have a good one! / Catch you later.** — **Goodbye.** より自然
 - フォーマル度は相手との関係で選ぶ。初対面に **What's up?** はNG
 
-次にやること: 会話中の「聞いてる感」を出すあいづちは [/posts/aizuchi-backchannel/](/posts/aizuchi-backchannel/) へ。
+次にやること: 会話中の「聞いてる感」を出すあいづちは [「「うんうん」を英語で — ネイティブのあいづち表現」](/posts/aizuchi-backchannel/) へ。

@@ -90,4 +90,4 @@ A: A refund, please.
 - 試着は **Can I try this on?**、買うなら **I'll take it.**、見送るなら **I'll think about it.**
 - 返品・返金は **I'd like to return this. / Can I get a refund?** — want ではなく would like で
 
-次にやること: 空港・ホテルで使う旅行英語は [/posts/travel-essentials/](/posts/travel-essentials/) へ。
+次にやること: 空港・ホテルで使う旅行英語は [「空港・ホテルで困らない — 旅行英語の決まり文句」](/posts/travel-essentials/) へ。

@@ -99,4 +99,4 @@ B: Yeah! Speaking of which, wanna try that new Thai place?
 - 話題転換は **Anyway, / Speaking of which, / By the way,** の3枚看板
 - **That works. / Sounds good. / No big deal.** は返信の定番として丸ごと覚える
 
-次にやること: 気になるテーマから読み返すなら、タグ一覧 [/tags/](/tags/) へ。
+次にやること: 気になるテーマから読み返すなら、[タグ一覧](/tags/) へ。

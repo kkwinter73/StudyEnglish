@@ -103,4 +103,4 @@ A: I guess we'll find out tomorrow.
 - 本音の前には **To be honest / Honestly** のサインを出す
 - 自信の度合いは **I'm pretty sure ↔ I guess ↔ I'm not sure, but** で言い分ける
 
-次にやること: 相手の意見に賛成・反対する言い方は [/posts/agreeing-and-disagreeing/](/posts/agreeing-and-disagreeing/) へ。
+次にやること: 相手の意見に賛成・反対する言い方は [「賛成も反対も角を立てずに — I'm with you / I see your point, but」](/posts/agreeing-and-disagreeing/) へ。

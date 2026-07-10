@@ -77,4 +77,4 @@ B: Tell me about it. I couldn't even reach the handrail.
 - **Yes** の連発と **Really?** 一辺倒は単調・失礼のもと
 - イントネーションであいづちの意味が変わる。上がり調子=興味あり
 
-次にやること: 驚き・感想を一言で返す表現は [/posts/reaction-phrases/](/posts/reaction-phrases/) へ。
+次にやること: 驚き・感想を一言で返す表現は [「No way! — 驚き・感想を一言で返すリアクション表現」](/posts/reaction-phrases/) へ。

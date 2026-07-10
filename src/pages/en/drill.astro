@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DrillApp from "../../components/DrillApp.astro";
+import { UI, localizeHref } from "../../i18n";
+const LANG = "en";
+---
+
+<BaseLayout title="Drill" lang={LANG} altUrl={localizeHref("ja", "/drill/")}>
+  <a class="back-link" href={localizeHref(LANG, "/")}>{UI[LANG].backToLogs}</a>
+  <div class="prose" style="margin-top:24px">
+    <h1>Instant Translation Drill 🎯</h1>
+    <p>
+      See the Japanese, and test whether the <strong>English comes out of your mouth</strong>.
+      Questions are auto-generated from every post on this blog. Say your answer out loud
+      before revealing it.
+    </p>
+    <ul style="color:var(--text-soft); font-size:0.92rem">
+      <li>Click the card (or press space) to reveal the answer → next question</li>
+      <li>"✅ Got it" is saved on this device; filter to "not yet" for review</li>
+      <li>Use 🔊 to check pronunciation, repeat it three times, then move on</li>
+    </ul>
+  </div>
+  <DrillApp lang={LANG} />
+</BaseLayout>

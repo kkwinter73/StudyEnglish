@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import DrillApp from "../components/DrillApp.astro";
+import { UI, localizeHref } from "../i18n";
+const LANG = "ja";
+---
+
+<BaseLayout title="Drill" lang={LANG} altUrl={localizeHref("en", "/drill/")}>
+  <a class="back-link" href={localizeHref(LANG, "/")}>{UI[LANG].backToLogs}</a>
+  <div class="prose" style="margin-top:24px">
+    <h1>瞬間英作文ドリル 🎯</h1>
+    <p>
+      日本語を見て、<strong>英語が口から出るか</strong>をテストする。全記事の表現から自動で出題される。
+      「読めばわかる」と「言える」の差を埋めるのがこのドリル。声に出して答えてから、答えを開くこと。
+    </p>
+    <ul style="color:var(--text-soft); font-size:0.92rem">
+      <li>カードをクリック（またはスペースキー）で 答え表示 → 次の問題</li>
+      <li>「✅ 覚えた」はこの端末に保存され、「まだ」だけに絞って復習できる</li>
+      <li>🔊 で発音を確認 → 3回声に出してから次へ進むと効果大</li>
+    </ul>
+  </div>
+  <DrillApp lang={LANG} />
+</BaseLayout>

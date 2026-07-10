@@ -1,0 +1,341 @@
+---
+// 瞬間英作文ドリル本体（/drill/ と /en/drill/ で共用）。
+// データはビルド時生成の /phrases.json を fetch し、「覚えた」は localStorage に持つ。
+import { withBase } from "../site";
+import type { Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const T = {
+  ja: {
+    allTags: "すべてのタグ",
+    unknownOnly: "「まだ」だけ出す",
+    reveal: "答えを見る（クリック / スペース）",
+    known: "✅ 覚えた",
+    unknown: "🔁 まだ",
+    next: "次へ →",
+    listen: "🔊 聞く",
+    source: "出典",
+    knownCount: "覚えた",
+    empty: "出題できるフレーズがありません。フィルタを変えてみてください。",
+    reset: "「覚えた」をリセット",
+    resetConfirm: "「覚えた」の記録をすべてリセットします。いいですか?",
+  },
+  en: {
+    allTags: "All tags",
+    unknownOnly: "Unlearned only",
+    reveal: "Show answer (click / space)",
+    known: "✅ Got it",
+    unknown: "🔁 Not yet",
+    next: "Next →",
+    listen: "🔊 Listen",
+    source: "source",
+    knownCount: "learned",
+    empty: "No phrases match the current filter.",
+    reset: "Reset progress",
+    resetConfirm: "Reset all learned marks?",
+  },
+}[lang];
+---
+
+<div
+  class="drill"
+  id="drill"
+  data-src={withBase("/phrases.json")}
+  data-empty={T.empty}
+  data-reset-confirm={T.resetConfirm}
+>
+  <div class="drill-controls">
+    <select id="drill-tag" aria-label="tag filter">
+      <option value="">{T.allTags}</option>
+    </select>
+    <label class="drill-check">
+      <input type="checkbox" id="drill-unknown" />
+      {T.unknownOnly}
+    </label>
+    <span class="drill-stats"><span id="drill-known-count">0</span> / <span id="drill-total">0</span> {T.knownCount}</span>
+  </div>
+
+  <div class="drill-card" id="drill-card" tabindex="0">
+    <p class="drill-ja" id="drill-ja"></p>
+    <button class="drill-reveal" id="drill-reveal" type="button">{T.reveal}</button>
+    <div class="drill-answer" id="drill-answer" hidden>
+      <p class="drill-en" id="drill-en"></p>
+      <p class="drill-meta">
+        <button class="drill-btn" id="drill-listen" type="button">{T.listen}</button>
+        <a id="drill-source" href="#">{T.source} →</a>
+      </p>
+      <div class="drill-actions">
+        <button class="drill-btn primary" id="drill-yes" type="button">{T.known}</button>
+        <button class="drill-btn" id="drill-no" type="button">{T.unknown}</button>
+        <button class="drill-btn" id="drill-next" type="button">{T.next}</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="drill-foot">
+    <button class="drill-reset" id="drill-reset" type="button">{T.reset}</button>
+  </p>
+</div>
+
+<script is:inline>
+  (() => {
+    const root = document.getElementById("drill");
+    const $ = (id) => document.getElementById(id);
+    const els = {
+      tag: $("drill-tag"),
+      unknown: $("drill-unknown"),
+      card: $("drill-card"),
+      ja: $("drill-ja"),
+      reveal: $("drill-reveal"),
+      answer: $("drill-answer"),
+      en: $("drill-en"),
+      listen: $("drill-listen"),
+      source: $("drill-source"),
+      yes: $("drill-yes"),
+      no: $("drill-no"),
+      next: $("drill-next"),
+      knownCount: $("drill-known-count"),
+      total: $("drill-total"),
+      reset: $("drill-reset"),
+    };
+
+    const KEY = "drill-known";
+    const load = () => {
+      try {
+        return JSON.parse(localStorage.getItem(KEY) || "{}");
+      } catch {
+        return {};
+      }
+    };
+    let known = load();
+    const save = () => localStorage.setItem(KEY, JSON.stringify(known));
+
+    const speak = (text) => {
+      if (!("speechSynthesis" in window)) return;
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = "en-US";
+      speechSynthesis.speak(u);
+    };
+
+    let all = [];
+    let pool = [];
+    let current = null;
+
+    const filtered = () => {
+      const tag = els.tag.value;
+      let list = tag ? all.filter((p) => p.tags.includes(tag)) : all;
+      if (els.unknown.checked) list = list.filter((p) => !known[p.en]);
+      return list;
+    };
+
+    const stats = () => {
+      const tag = els.tag.value;
+      const base = tag ? all.filter((p) => p.tags.includes(tag)) : all;
+      els.total.textContent = String(base.length);
+      els.knownCount.textContent = String(base.filter((p) => known[p.en]).length);
+    };
+
+    const next = () => {
+      pool = filtered();
+      stats();
+      els.answer.hidden = true;
+      els.reveal.hidden = false;
+      if (pool.length === 0) {
+        els.ja.textContent = root.dataset.empty;
+        els.reveal.hidden = true;
+        current = null;
+        return;
+      }
+      let pick = pool[Math.floor(Math.random() * pool.length)];
+      if (current && pool.length > 1) {
+        while (pick.en === current.en) pick = pool[Math.floor(Math.random() * pool.length)];
+      }
+      current = pick;
+      els.ja.textContent = current.ja;
+    };
+
+    const reveal = () => {
+      if (!current || !els.answer.hidden) return;
+      els.en.textContent = current.en;
+      els.source.href = current.url;
+      els.answer.hidden = false;
+      els.reveal.hidden = true;
+    };
+
+    els.reveal.addEventListener("click", reveal);
+    els.card.addEventListener("click", (e) => {
+      if (e.target === els.card || e.target === els.ja) els.answer.hidden ? reveal() : next();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.code !== "Space" || /input|select|textarea/i.test(e.target.tagName)) return;
+      e.preventDefault();
+      els.answer.hidden ? reveal() : next();
+    });
+    els.listen.addEventListener("click", () => current && speak(current.en));
+    els.yes.addEventListener("click", () => {
+      if (!current) return;
+      known[current.en] = 1;
+      save();
+      next();
+    });
+    els.no.addEventListener("click", () => {
+      if (!current) return;
+      delete known[current.en];
+      save();
+      next();
+    });
+    els.next.addEventListener("click", next);
+    els.tag.addEventListener("change", next);
+    els.unknown.addEventListener("change", next);
+    els.reset.addEventListener("click", () => {
+      if (!confirm(root.dataset.resetConfirm)) return;
+      known = {};
+      save();
+      next();
+    });
+
+    fetch(root.dataset.src)
+      .then((r) => r.json())
+      .then((data) => {
+        all = data;
+        const tags = [...new Set(all.flatMap((p) => p.tags))].sort();
+        for (const t of tags) {
+          const o = document.createElement("option");
+          o.value = t;
+          o.textContent = t;
+          els.tag.appendChild(o);
+        }
+        next();
+      });
+  })();
+</script>
+
+<style>
+  .drill-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin: 18px 0;
+  }
+  .drill-controls select {
+    font: inherit;
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg-elev);
+    color: var(--text);
+  }
+  .drill-check {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-soft);
+    font-size: 0.92rem;
+  }
+  .drill-stats {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-faint);
+  }
+  .drill-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-elev);
+    box-shadow: var(--shadow);
+    padding: 34px 28px;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+  }
+  .drill-ja {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.7;
+    margin: 0 0 18px;
+  }
+  .drill-reveal {
+    font: inherit;
+    font-size: 0.9rem;
+    color: var(--text-faint);
+    background: none;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  .drill-reveal:hover {
+    color: var(--accent-deep);
+    border-color: var(--accent);
+  }
+  .drill-en {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-deep);
+    line-height: 1.6;
+    margin: 0 0 10px;
+  }
+  .drill-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 0 0 16px;
+    font-size: 0.88rem;
+  }
+  .drill-meta a {
+    color: var(--text-faint);
+  }
+  .drill-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .drill-btn {
+    font: inherit;
+    font-size: 0.92rem;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg-elev);
+    color: var(--text);
+    cursor: pointer;
+  }
+  .drill-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent-deep);
+  }
+  .drill-btn.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .drill-btn.primary:hover {
+    background: var(--accent-deep);
+    color: #fff;
+  }
+  .drill-foot {
+    margin-top: 16px;
+    text-align: right;
+  }
+  .drill-reset {
+    font: inherit;
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+</style>

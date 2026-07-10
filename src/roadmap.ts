@@ -79,7 +79,7 @@ export const DOMAINS: ReadonlyArray<Domain> = [
     ja: { label: "ネイティブらしさ", blurb: "句動詞・イディオム・音の縮約。教科書との差はここに出る。" },
     en: { label: "Sounding Native", blurb: "Phrasal verbs, idioms, contractions — where textbook English ends." },
     deps: ["flow"],
-    slugs: ["daily-phrasal-verbs", "everyday-idioms", "casual-contractions"],
+    slugs: ["daily-phrasal-verbs", "everyday-idioms", "bother-expressions", "casual-contractions"],
   },
   {
     id: "nuance",

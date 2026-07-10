@@ -71,7 +71,16 @@ export const DOMAINS: ReadonlyArray<Domain> = [
     ja: { label: "職場と雑談", blurb: "会議の定番表現と、沈黙を埋めるスモールトーク。" },
     en: { label: "Work & Small Talk", blurb: "Meeting staples, plus small talk to fill the silence." },
     deps: ["flow", "opinions"],
-    slugs: ["workplace-english", "answering-any-questions", "small-talk-topics", "talking-about-your-weekend", "sharing-news", "talking-about-movies"],
+    slugs: [
+      "workplace-english",
+      "answering-any-questions",
+      "small-talk-topics",
+      "talking-about-your-weekend",
+      "sharing-news",
+      "talking-about-movies",
+      "talking-about-games",
+      "talking-about-your-job",
+    ],
   },
   {
     id: "native",

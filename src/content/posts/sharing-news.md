@@ -17,7 +17,25 @@ level: intermediate
 - **How's life?** — 調子どう?（近況全般）
 - **Any news?** — なにか報告ある?（進捗や結果を知ってる前提のときも）
 
-> 💡 ゼロ回答で流す日の返し方は [「Not much — 「週末どうだった?」に自然に答える」](/posts/talking-about-your-weekend/) を参照。この記事は「ネタがある日」用。
+## 特にない日はこう流す
+
+ネタがない日でも **Nothing.** 単発で切らず、「特にないよ＋そっちは?」で感じよくボールを返す。
+
+- **Not much. How about you?** — 特にないかな。そっちは?（一番の定番）
+- **Nothing much, just work.** — 特には。仕事ばっかりだよ
+- **Same old, same old.** — 相変わらずだよ
+- **Can't complain.** — まあ順調だよ（不満はない、の含み）
+- **Nothing exciting, just the usual.** — 面白いことは特に、いつも通り
+
+```text
+A: What's new with you?
+B: Nothing much, just work. You?
+A: Same here. Busy season, huh?
+```
+
+（A: なんか新しいことあった? / B: 特にはないなあ、仕事ばっかり。そっちは? / A: こっちも。忙しい時期だよね）
+
+> 💡 ゼロ回答に小ネタを1つ足して会話にする型は [「Not much — 「週末どうだった?」に自然に答える」](/posts/talking-about-your-weekend/) が詳しい。この先は「ネタがある日」用。
 
 ## 「あるよ!」で乗る
 
@@ -88,6 +106,7 @@ B: I'm down.
 
 ## まとめ
 
+- ネタがない日は **Not much. How about you?** で感じよく流す（**Nothing.** 単発はNG）
 - ネタがある日は **Actually, yeah!** で乗ってから本題に入る
 - 自分から切り出すなら **Guess what?**（相手の **What?** はお約束、すぐ本題を言う）
 - 小さいことでも堂々とネタにするのが英語の雑談。謙遜の前置きは不要

@@ -31,6 +31,7 @@ export const DOMAINS: ReadonlyArray<Domain> = [
     deps: [],
     slugs: [
       "greetings-beyond-hello",
+      "morning-noon-night",
       "aizuchi-backchannel",
       "reaction-phrases",
       "asking-to-repeat",
@@ -44,7 +45,7 @@ export const DOMAINS: ReadonlyArray<Domain> = [
     ja: { label: "頼む・感謝する・謝る", blurb: "人間関係を丸くする3点セット。丁寧さの度合いがカギ。" },
     en: { label: "Requests, Thanks & Apologies", blurb: "The trio that keeps relationships smooth — politeness levels are the key." },
     deps: ["flow"],
-    slugs: ["polite-requests", "thanks-and-replies", "apologies-in-english"],
+    slugs: ["polite-requests", "asking-permission", "thanks-and-replies", "apologies-in-english"],
   },
   {
     id: "opinions",
@@ -89,7 +90,7 @@ export const DOMAINS: ReadonlyArray<Domain> = [
     ja: { label: "ネイティブらしさ", blurb: "句動詞・イディオム・音の縮約。教科書との差はここに出る。" },
     en: { label: "Sounding Native", blurb: "Phrasal verbs, idioms, contractions — where textbook English ends." },
     deps: ["flow"],
-    slugs: ["daily-phrasal-verbs", "everyday-idioms", "bother-expressions", "casual-contractions"],
+    slugs: ["daily-phrasal-verbs", "everyday-idioms", "bother-expressions", "time-expressions", "casual-contractions"],
   },
   {
     id: "nuance",

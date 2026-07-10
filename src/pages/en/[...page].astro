@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PostCard from "../../components/PostCard.astro";
+import TodayPhrase from "../../components/TodayPhrase.astro";
 import { SITE, PAGE_SIZE } from "../../site";
 import { UI, byLang, localizeHref } from "../../i18n";
 import type { GetStaticPaths } from "astro";
@@ -50,6 +51,8 @@ const ui = UI[LANG];
       </section>
     )
   }
+
+  {isFirst && <TodayPhrase lang={LANG} />}
 
   <p class="section-label">
     {ui.logsLabel} <span style="color:var(--text-faint)">({page.total})</span>

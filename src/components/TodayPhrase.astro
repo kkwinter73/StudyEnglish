@@ -1,0 +1,101 @@
+---
+// トップに出す「今日のフレーズ」。/phrases.json から日替わりで1つ選ぶ（日数シードで決定的）。
+import { withBase } from "../site";
+import { localizeHref, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const T = {
+  ja: { label: "今日のフレーズ", drill: "ドリルで練習する →" },
+  en: { label: "Phrase of the day", drill: "Practice in the drill →" },
+}[lang];
+const drillUrl = localizeHref(lang, "/drill/");
+---
+
+<section class="today" id="today" data-src={withBase("/phrases.json")} hidden>
+  <p class="section-label">{T.label} 🎯</p>
+  <div class="today-card">
+    <button class="today-en" id="today-en" type="button" title="🔊"></button>
+    <p class="today-ja" id="today-ja"></p>
+    <p class="today-meta">
+      <a id="today-src" href="#"></a>
+      <a href={drillUrl}>{T.drill}</a>
+    </p>
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    const root = document.getElementById("today");
+    fetch(root.dataset.src)
+      .then((r) => r.json())
+      .then((all) => {
+        if (!all.length) return;
+        const day = Math.floor(Date.now() / 86400000);
+        const p = all[day % all.length];
+        const en = document.getElementById("today-en");
+        en.textContent = "🔊 " + p.en;
+        en.addEventListener("click", () => {
+          if (!("speechSynthesis" in window)) return;
+          speechSynthesis.cancel();
+          const u = new SpeechSynthesisUtterance(p.en);
+          u.lang = "en-US";
+          speechSynthesis.speak(u);
+        });
+        document.getElementById("today-ja").textContent = p.ja;
+        const src = document.getElementById("today-src");
+        src.textContent = p.title;
+        src.href = p.url;
+        root.hidden = false;
+      });
+  })();
+</script>
+
+<style>
+  .today {
+    margin: 26px 0 6px;
+  }
+  .today-card {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius);
+    background: var(--bg-elev);
+    box-shadow: var(--shadow);
+    padding: 18px 22px;
+  }
+  .today-en {
+    font: inherit;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent-deep);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+    line-height: 1.5;
+  }
+  .today-en:hover {
+    text-decoration: underline;
+  }
+  .today-ja {
+    margin: 6px 0 10px;
+    color: var(--text-soft);
+    line-height: 1.7;
+  }
+  .today-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0;
+    font-size: 0.85rem;
+  }
+  .today-meta a {
+    color: var(--text-faint);
+  }
+  .today-meta a:hover {
+    color: var(--accent-deep);
+  }
+</style>

@@ -86,6 +86,8 @@ export const UI = {
 export const NAV: ReadonlyArray<{ label: string; path: string }> = [
   { label: "Logs", path: "/" },
   { label: "Map", path: "/map/" },
+  { label: "Drill", path: "/drill/" },
+  { label: "Practice", path: "/practice/" },
   { label: "Tags", path: "/tags/" },
   { label: "About", path: "/about/" },
 ];

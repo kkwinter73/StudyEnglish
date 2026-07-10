@@ -34,6 +34,7 @@ export const DOMAINS: ReadonlyArray<Domain> = [
       "aizuchi-backchannel",
       "reaction-phrases",
       "asking-to-repeat",
+      "confirming-instructions",
     ],
   },
   {

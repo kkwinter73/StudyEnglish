@@ -11,6 +11,7 @@
 | [0001. ブログ基盤に Astro を採用する](decisions/0001-use-astro.md) | 英語勉強ログのブログ基盤に Astro（静的サイトジェネレータ） を採用する。 | accepted |
 | [0002. コンテンツは「都度 Markdown を整形」する運用にする](decisions/0002-content-workflow.md) | 英語の勉強メモ（Notion 等）は、自動連携で同期せず、その都度 Markdown を受け取って | accepted |
 | [0003. GitHub Pages（プロジェクトページ）で公開し base パスを設定する](decisions/0003-github-pages-base-path.md) | `kkwinter73.github.io/StudyEnglish/` で公開するため、Astro に `base: "/StudyEnglish"` を設定し、 | accepted |
+| [0004. 練習機能は「記事の書式からビルド時抽出」で作る](decisions/0004-practice-features.md) | 瞬間英作文ドリル（/drill/）・シャドーイング（/practice/）・今日のフレーズは、 | accepted |
 
 > 新しい決定を足すときは `docs/decisions/NNNN-xxxx.md` を1ファイル追加し、
 > `node scripts/gen-decisions-index.mjs` を実行する（この索引は手編集しない）。

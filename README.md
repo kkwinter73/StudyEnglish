@@ -46,16 +46,26 @@ Notion のメモから起こす場合は、Claude Code で **`/new-log`** を使
 src/
   content/posts/   記事(Markdown)。1記事=1ファイル
   content.config.ts frontmatter スキーマ（型の真実源）
-  pages/           ルーティング（一覧 / 記事 / タグ / map / about / 404）
+  pages/           ルーティング（一覧 / 記事 / タグ / map / drill / practice / about / 404）
   layouts/         Base / Post レイアウト
-  components/      Header / Footer / PostCard
+  components/      Header / Footer / PostCard / DrillApp / ShadowingList / TodayPhrase
   styles/global.css 配色・デザイン（cyan #00ADD8 が基調）
   site.ts          サイト設定（タイトル・ナビ・文言）
   roadmap.ts       学習マップ（/map）のデータ
+  phrases.ts       記事本文から練習用データを抽出（drill / practice の源泉）
 docs/              知識の置き場所（SoT 表・意思決定ログ・ハーネス解説）
 .claude/           開発ハーネス（hooks / rules / skills / settings）
 scripts/           decisions 索引の生成
 ```
+
+## 練習機能（話すための学習）
+
+記事の書式（「**英語** — 日本語」と ```text 会話例）からビルド時に自動抽出される。
+記事を足すだけで練習素材も増える（[decision 0004](docs/decisions/0004-practice-features.md)）。
+
+- **/drill/** — 瞬間英作文ドリル。日本語→英語の想起テスト。「覚えた」は localStorage に保存
+- **/practice/** — シャドーイング。全会話例をブラウザ読み上げ（Web Speech API）で練習
+- **トップの「今日のフレーズ」** — 日替わりで1表現を表示
 
 ## デプロイ（GitHub Pages）
 

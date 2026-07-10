@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ShadowingList from "../components/ShadowingList.astro";
+import { UI, localizeHref } from "../i18n";
+const LANG = "ja";
+---
+
+<BaseLayout title="Practice" lang={LANG} altUrl={localizeHref("en", "/practice/")}>
+  <a class="back-link" href={localizeHref(LANG, "/")}>{UI[LANG].backToLogs}</a>
+  <div class="prose" style="margin-top:24px">
+    <h1>シャドーイング練習 🗣️</h1>
+    <p>
+      全記事の会話例を1ページに集めた。音声（ブラウザ読み上げ）の後について、
+      <strong>同じスピード・同じリズムで声に出す</strong>のがシャドーイング。読めるだけの表現を「言える」に変える。
+    </p>
+    <h2>毎日10分ルーチン</h2>
+    <ol style="color:var(--text-soft)">
+      <li>トップの「今日のフレーズ」を音読（1分）</li>
+      <li><a href={localizeHref(LANG, "/drill/")}>瞬間英作文ドリル</a>を10問。声に出して答える（5分）</li>
+      <li>このページの会話をひとつ選び、▶ 再生 → 各行をクリックしながら3回ずつ真似る（4分）</li>
+    </ol>
+    <blockquote>
+      <p>💡 うまく言えない行は 🐢 ゆっくり再生で口の動きを作ってから、通常速度に戻すと定着が早い。</p>
+    </blockquote>
+  </div>
+  <ShadowingList lang={LANG} />
+</BaseLayout>

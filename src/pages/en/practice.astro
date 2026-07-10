@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ShadowingList from "../../components/ShadowingList.astro";
+import { UI, localizeHref } from "../../i18n";
+const LANG = "en";
+---
+
+<BaseLayout title="Practice" lang={LANG} altUrl={localizeHref("ja", "/practice/")}>
+  <a class="back-link" href={localizeHref(LANG, "/")}>{UI[LANG].backToLogs}</a>
+  <div class="prose" style="margin-top:24px">
+    <h1>Shadowing Practice 🗣️</h1>
+    <p>
+      Every dialogue from the blog, gathered on one page. Play the audio (browser TTS) and
+      <strong>repeat right behind it at the same speed and rhythm</strong> — that's shadowing.
+      It turns phrases you can read into phrases you can say.
+    </p>
+    <h2>Daily 10-minute routine</h2>
+    <ol style="color:var(--text-soft)">
+      <li>Read the "Phrase of the day" on the top page out loud (1 min)</li>
+      <li>Do 10 questions in the <a href={localizeHref(LANG, "/drill/")}>drill</a>, answering out loud (5 min)</li>
+      <li>Pick one dialogue below: ▶ play it, then mimic each line 3 times (4 min)</li>
+    </ol>
+    <blockquote>
+      <p>💡 For lines you stumble on, use 🐢 slow playback first, then return to normal speed.</p>
+    </blockquote>
+  </div>
+  <ShadowingList lang={LANG} />
+</BaseLayout>

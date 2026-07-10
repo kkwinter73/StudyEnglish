@@ -1,0 +1,193 @@
+---
+// シャドーイング用の会話例一覧（/practice/ と /en/practice/ で共用）。
+// 全日本語記事の ```text 会話例をビルド時に抽出し、Web Speech API で読み上げる。
+import { getCollection } from "astro:content";
+import { byLang, localizeHref, postSlug, type Lang } from "../i18n";
+import { extractDialogues } from "../phrases";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const T = {
+  ja: { play: "▶ 通しで再生", slow: "🐢 ゆっくり再生", stop: "⏹ 停止", line: "行をクリックで個別再生" },
+  en: { play: "▶ Play all", slow: "🐢 Play slowly", stop: "⏹ Stop", line: "Click a line to play it" },
+}[lang];
+
+const posts = (await getCollection("posts", byLang("ja"))).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const sections = posts
+  .map((p) => ({
+    title: p.data.title,
+    url: localizeHref(lang, `/posts/${postSlug(p)}/`),
+    dialogues: extractDialogues(p.body ?? ""),
+  }))
+  .filter((s) => s.dialogues.length > 0);
+---
+
+<div class="shadowing">
+  {
+    sections.map((s) => (
+      <section class="sh-post">
+        <h2 class="sh-title">
+          <a href={s.url}>{s.title}</a>
+        </h2>
+        {s.dialogues.map((d) => (
+          <div class="sh-dialogue">
+            <div class="sh-lines">
+              {d.lines.map((l) => (
+                <button class="sh-line" type="button" data-en={l.text} title={T.line}>
+                  {l.speaker && <span class="sh-speaker">{l.speaker}</span>}
+                  <span>{l.text}</span>
+                </button>
+              ))}
+            </div>
+            {d.ja && <p class="sh-ja">{d.ja}</p>}
+            <div class="sh-controls">
+              <button class="sh-btn sh-play" type="button" data-rate="1">{T.play}</button>
+              <button class="sh-btn sh-play" type="button" data-rate="0.75">{T.slow}</button>
+              <button class="sh-btn sh-stop" type="button">{T.stop}</button>
+            </div>
+          </div>
+        ))}
+      </section>
+    ))
+  }
+</div>
+
+<script is:inline>
+  (() => {
+    if (!("speechSynthesis" in window)) return;
+    // session: 停止・別再生のたびに増やし、進行中の連続再生ループを無効化するトークン
+    let session = 0;
+    const speak = (text, rate) =>
+      new Promise((resolve) => {
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = "en-US";
+        u.rate = rate;
+        u.onend = resolve;
+        u.onerror = resolve;
+        speechSynthesis.speak(u);
+      });
+    const clearHighlights = () =>
+      document.querySelectorAll(".sh-line.speaking").forEach((l) => l.classList.remove("speaking"));
+
+    document.querySelectorAll(".sh-line").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        session++;
+        speechSynthesis.cancel();
+        clearHighlights();
+        speak(btn.dataset.en, 1);
+      });
+    });
+
+    document.querySelectorAll(".sh-play").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const my = ++session;
+        speechSynthesis.cancel();
+        clearHighlights();
+        const rate = Number(btn.dataset.rate);
+        const lines = btn.closest(".sh-dialogue").querySelectorAll(".sh-line");
+        for (const l of lines) {
+          if (my !== session) return;
+          l.classList.add("speaking");
+          await speak(l.dataset.en, rate);
+          l.classList.remove("speaking");
+        }
+      });
+    });
+
+    document.querySelectorAll(".sh-stop").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        session++;
+        speechSynthesis.cancel();
+        clearHighlights();
+      });
+    });
+  })();
+</script>
+
+<style>
+  .sh-post {
+    margin: 34px 0;
+  }
+  .sh-title {
+    font-size: 1.05rem;
+    margin: 0 0 12px;
+  }
+  .sh-title a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  .sh-title a:hover {
+    color: var(--accent-deep);
+  }
+  .sh-dialogue {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-elev);
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .sh-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .sh-line {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    font: inherit;
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
+    text-align: left;
+    background: none;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 4px 8px;
+    color: var(--text);
+    cursor: pointer;
+    line-height: 1.6;
+  }
+  .sh-line:hover {
+    background: var(--accent-soft);
+  }
+  .sh-line.speaking {
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+  }
+  .sh-speaker {
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .sh-ja {
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    margin: 10px 0 0;
+    line-height: 1.7;
+  }
+  .sh-controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .sh-btn {
+    font: inherit;
+    font-size: 0.82rem;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg-elev);
+    color: var(--text-soft);
+    cursor: pointer;
+  }
+  .sh-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent-deep);
+  }
+</style>

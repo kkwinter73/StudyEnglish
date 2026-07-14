@@ -99,6 +99,6 @@ export const DOMAINS: ReadonlyArray<Domain> = [
     ja: { label: "ニュアンス調整", blurb: "フィラーと和らげ表現、どこでも効く万能フレーズ。" },
     en: { label: "Tuning the Nuance", blurb: "Fillers, softeners, and all-purpose phrases that work anywhere." },
     deps: ["opinions"],
-    slugs: ["fillers-and-softeners", "versatile-phrases", "gave-up-on-it"],
+    slugs: ["fillers-and-softeners", "versatile-phrases", "gave-up-on-it", "i-look-up-to"],
   },
 ];

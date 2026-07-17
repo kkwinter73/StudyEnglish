@@ -90,7 +90,7 @@ export const DOMAINS: ReadonlyArray<Domain> = [
     ja: { label: "ネイティブらしさ", blurb: "句動詞・イディオム・音の縮約。教科書との差はここに出る。" },
     en: { label: "Sounding Native", blurb: "Phrasal verbs, idioms, contractions — where textbook English ends." },
     deps: ["flow"],
-    slugs: ["daily-phrasal-verbs", "everyday-idioms", "bother-expressions", "time-expressions", "casual-contractions"],
+    slugs: ["daily-phrasal-verbs", "everyday-idioms", "bother-expressions", "time-expressions", "forgot-to-do", "casual-contractions"],
   },
   {
     id: "nuance",
@@ -99,6 +99,6 @@ export const DOMAINS: ReadonlyArray<Domain> = [
     ja: { label: "ニュアンス調整", blurb: "フィラーと和らげ表現、どこでも効く万能フレーズ。" },
     en: { label: "Tuning the Nuance", blurb: "Fillers, softeners, and all-purpose phrases that work anywhere." },
     deps: ["opinions"],
-    slugs: ["fillers-and-softeners", "versatile-phrases", "gave-up-on-it", "i-look-up-to"],
+    slugs: ["fillers-and-softeners", "versatile-phrases", "gave-up-on-it", "i-look-up-to", "will-vs-would"],
   },
 ];
